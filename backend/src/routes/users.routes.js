@@ -9,6 +9,6 @@ const upload = multer(uploadConfig.MULTER);
 
 const usersController = new UsersController();
 
-// usersRoutes.post("/", usersController.create);
+usersRoutes.post("/", usersController.create);
 
 module.exports = usersRoutes;
