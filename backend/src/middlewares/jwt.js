@@ -2,7 +2,7 @@ const { verify } = require("jsonwebtoken")
 const AppError = require("../utils/AppError")
 const authConfig = require("../configs/auth")
 
-function ensureAuthenticated(req, res, next){
+function jwt(req, res, next){
     const authHeader = req.headers.authorization;
 
     if(!authHeader){
@@ -25,4 +25,4 @@ function ensureAuthenticated(req, res, next){
     }
 }
 
-module.exports = ensureAuthenticated
+module.exports = jwt

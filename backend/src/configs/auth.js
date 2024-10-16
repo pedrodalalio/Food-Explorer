@@ -1,6 +1,6 @@
 module.exports = {
     jwt: {
-        secret: "default",
+        secret: "food_explorer_jwtkey",
         expiresIn: "1d"
     }
 }
