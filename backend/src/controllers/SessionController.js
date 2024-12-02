@@ -21,11 +21,10 @@ class SessionsController{
         }
 
         const { secret, expiresIn } = authConfig.jwt
-        const token = sign({}, secret, {
-            subject: String(user.id),
+        const token = sign({ id: user.id, isAdmin: user.isAdmin }, secret, {
             expiresIn
-        })
-
+        });
+        
         return res.json({ user, token })
     }
 }

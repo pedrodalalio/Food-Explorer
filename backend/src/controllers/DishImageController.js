@@ -4,6 +4,10 @@ const DiskStorage = require("../providers/DiskStorage");
 
 class DishImageController {
   async update(req, res) {
+    if (!req.user.isAdmin) {
+      throw new AppError("Você não tem permissão para acessar esta rota.", 403);
+    }
+
     const dish_id = req.params.id;
     const imageFileName = req.file.filename;
 
@@ -16,7 +20,6 @@ class DishImageController {
     const dish = await knex("dishes").where({ id: dish_id }).first();
 
     if (dish.image) {
-      // caso o usuario ja possua foto, deve deletar a foto antiga
       await diskStorage.deleteFile(dish.image);
     }
 

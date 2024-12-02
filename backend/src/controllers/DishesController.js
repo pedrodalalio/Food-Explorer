@@ -47,6 +47,9 @@ class DishesController {
   }
 
   async create(req, res) {
+    if (!req.user.isAdmin) {
+      throw new AppError("Você não tem permissão para acessar esta rota.", 403);
+    }
 
     const { title, description, category, price, ingredientes } = req.body;
 
@@ -62,6 +65,9 @@ class DishesController {
   }
 
   async update(req, res) {
+    if (!req.user.isAdmin) {
+      throw new AppError("Você não tem permissão para acessar esta rota.", 403);
+    }
 
     const { title, description, category, price, ingredientes } = req.body;
 
@@ -87,6 +93,10 @@ class DishesController {
   }
 
   async delete(req, res) {
+    if (!req.user.isAdmin) {
+      throw new AppError("Você não tem permissão para acessar esta rota.", 403);
+    }
+
     const dish_id = req.params.id;
 
     if (!dish_id) {

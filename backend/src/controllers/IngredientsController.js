@@ -4,6 +4,9 @@ const knex = require("../database/knex");
 
 class IngredientsController {
   async delete(req, res) {
+    if (!req.user.isAdmin) {
+      throw new AppError("Você não tem permissão para acessar esta rota.", 403);
+    }
 
     if (!req.params.id) {
       throw new AppError("ID do ingrediente não informado", 400);
