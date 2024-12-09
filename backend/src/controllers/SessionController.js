@@ -8,6 +8,10 @@ class SessionsController{
     async create(req, res){
         const { email, password } = req.body
 
+        if(!email || !password){
+            throw new AppError("Necessário informar E-mail e senha para efetuar login", 401)
+        }
+
         const user = await knex("users").where({ email }).first()
 
         if(!user){

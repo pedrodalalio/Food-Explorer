@@ -53,6 +53,10 @@ class DishesController {
 
     const { title, description, category, price, ingredientes } = req.body;
 
+    if(!title || !description  || !category || !price){
+      throw new AppError("Necessário informar título, descrição, categoria e preço para adicionar um novo prato", 403);
+    }
+
     const createdDish = await knex('dishes').insert({ title, description, category, price });
 
     if (ingredientes) {
@@ -70,6 +74,10 @@ class DishesController {
     }
 
     const { title, description, category, price, ingredientes } = req.body;
+
+    if(!title || !description  || !category || !price){
+      throw new AppError("Necessário informar título, descrição, categoria e preço para editar um prato", 403);
+    }
 
     if (!req.params.id) {
       throw new AppError("ID do prato não informado", 400);
