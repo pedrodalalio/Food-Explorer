@@ -57,11 +57,11 @@ export function SignIn() {
               {...register('password', {
                 required: 'Campo obrigatório',
                 minLength: {
-                  value: 6,
-                  message: 'Senha deve ter no mínimo 6 caracteres'
+                  value: 3,
+                  message: 'Senha deve ter no mínimo 3 caracteres'
                 }
               })}
-              placeholder='No mínimo 6 caracteres'
+              placeholder='No mínimo 3 caracteres'
             />
             {errors.password && <ErrorHelperText>{errors.password.message}</ErrorHelperText>}
           </InputContainer>
