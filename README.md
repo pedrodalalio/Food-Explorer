@@ -41,7 +41,7 @@ O projeto é dividido em **frontend** e **backend**, oferecendo funcionalidades 
 
 ### 1. Clonar o repositório
 ```
-  git clone https://github.com/seu-usuario/Food-Explorer.git
+  git clone https://github.com/pedrodalalio/Food-Explorer.git
   cd Food-Explorer-main
 ```
 ## Backend
